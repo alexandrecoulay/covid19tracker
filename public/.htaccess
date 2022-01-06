@@ -1,0 +1,7 @@
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^covid.boteric\.fr [NC]
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://covid.boteric.fr/$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
