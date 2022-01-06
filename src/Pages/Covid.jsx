@@ -15,16 +15,18 @@ function CovidHome() {
             var new_map = [];
 
             response.timeline.forEach((data) => {
-                var result = (data.todayHospitalStart+data.todayReanimationStart)/data.todayCases;
+                var hospital = (data.todayHospitalStart+data.todayReanimationStart)/data.todayCases;
+                var mort = data.todayDeathsHospital/data.todayCases;
 
-                result = result === Infinity || isNaN(result) ? null : result;
-
+                hospital = hospital === Infinity || isNaN(hospital) ? null : hospital;
+                mort = mort === Infinity || isNaN(mort) ? null : mort;
+                
                 const json = {
-                    cas: 100,
-                    hospitalisation: result,
+                    cas: 100*100,
+                    hospitalisation: hospital*100,
                     reanimation: (data.todayReanimationStart/data.todayCases)*100,
                     gueris: (data.todayRecovered/data.todayCases)*100,
-                    mort: (data.todayDeathsHospital/data.todayCases) === Infinity || isNaN((data.todayDeathsHospital/data.todayCases)) ? null : (data.todayDeathsHospital/data.todayCases),
+                    mort: mort*100,
                     date: data.date
                 }
 
@@ -48,9 +50,9 @@ function CovidHome() {
                             <Bar stackId="a" dataKey="hospitalisation" fill="#4D4DD5" />
                             <XAxis dataKey="date" interval="preserveStartEnd" tickFormatter={str => {
                                 const date = dayjs(str).get('month');
-                                console.log(date);
+
                                 if(date % 4 === 1){
-                                    return dayjs(str).locale(fr).format("MMM, DD")
+                                    return dayjs(str).locale(fr).format(" DD MMM ")
                                 }
                                 return ""
                             }} axisLine={false} tickLine={10} />
