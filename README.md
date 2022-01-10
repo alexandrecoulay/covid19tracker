@@ -1,3 +1,6 @@
+# covid19tracker
+Statistique du COVID-19 pour 100 cas
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -69,6 +72,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 =======
-# covid19tracker
-Statistique du COVID-19 pour 100 cas
->>>>>>> e4be6c99428bef8f0910f94183966eca20aa1661
